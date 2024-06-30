@@ -13,9 +13,16 @@ fetch(urlBase)
   // async / await 
 
   async function obterDados() {
-    const resposta = await fetch(urlBase)
-    const  dados = await resposta.json()
-    console.log(dados)
+    try{
+        const resposta = await fetch(urlBase)
+        const  dados = await resposta.json()
+        console.log(dados) 
+    }catch(erro){
+        console.log(erro)
+    }finally{
+        console.log("terminou a requisição")
+    }
+    
   }
 
   obterDados()
