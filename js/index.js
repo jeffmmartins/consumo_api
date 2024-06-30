@@ -1,9 +1,12 @@
+const urlBase = "https://viacep.com.br/ws/01001000/json/"
 
-
-fetch("viacep.com.br/ws/01001000/json/")
+fetch(urlBase)
   .then((response) => {
-    console.log(response);
+    response.json().then((dados) => console.log(dados) )
+    
   })
   .catch((error) => {
     console.log(error);
   });
+
+  
