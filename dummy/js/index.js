@@ -12,10 +12,20 @@ async function getUsers() {
 
 getUsers()
 
-async function getUser() {}
+async function getUser() {
+   // passando Header dentro do fetch, passando o id do usuario 
+  const resposta = await fetch("https://dummyapi.io/data/v1/user/2545589655411256322541", {
+    headers: {
+        "app-id": "25478965214533654122"
+    }
+});
+
+  const user = await resposta.json();
+  console.log(user); // array com os usuarios 
+}
 
 async function createUser() {
-    const userDate ={
+    const userData ={
         firstName: "Jefferson",
         lastName: "Mendes",
         email: "teste@gmail.com"
@@ -27,12 +37,12 @@ async function createUser() {
             method: "POST",
             headers: {
                 "app-id": "25478965214533654122",
-                "Content-type": "aplication/json" // esse foi criado no insomnia quando foi feito o teste, entao preciso oassar aqui 
+                "Content-type": "aplication/json", // esse foi criado no insomnia quando foi feito o teste, entao preciso oassar aqui 
             },
             //no body nao posso passar um objeto do js , tenho que converter 
-            body: JSON.stringify(userDate)
+            body: JSON.stringify(userData),
         })
-    } catch (erro) {
+    } catch(erro) {
         console.log("deu erro ao criar o usuario")
     }
 }
